@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-3.3.1.js"></script>
+    <link href="Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <script src="Scripts/jquery-ui-1.12.1.js"></script>
+    <style>
+        .divClass{
+            border:3px solid black;
+            padding:5px;
+            width:250px;
+            background-color:lightskyblue;
+            color:black;
+            display:inline-table;
+              }
+        li{
+            font-size:20px;
+        }
+        .hilight{
+            background-color:green;
+            color:white;
+            border:3px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="divClass">
+        Cities & Countries
+        <ul id="source">
+            <li data-value="country">Bangladesh</li>
+            <li data-value="country">India</li>
+            <li data-value="country">USA</li>
+            <li data-value="city">Dhaka</li>
+            <li data-value="city">Kolkata</li>
+            <li data-value="city">London</li>
+        </ul>
+    </div>
+    <div id="country" class="divClass">
+        Country
+        <ul id="countries"></ul>
+    </div>
+    <div id="city" class="divClass">
+        Cities
+        <ul id="cities" ></ul>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#source li').draggable({
+                //helper:'clone',
+                helper: function () {
+                    return '<b><u>' + $(this).text() + '</b></u>';
+                },
+                revert:'invalid'
+            });
+            $('#country').droppable({
+                accept: 'li[data-value="country"]',
+                activeClass: 'hilight',
+                //activate:function (event,ui) {
+                //       $(this).addClass('hilight');
+                //},
+                //deactivate:function (event,ui) {
+                //        $(this).removeClass('hilight');
+                //    },
+                //hoverClass: 'hilight',
+                //over: function (event,ui) {
+                //    $(this).addClass('hilight');
+                //},
+                //out: function (event,ui) {
+                //    $(this).removeClass('hilight');
+                //},
+                drop: function (event, ui) {
+                    $('#countries').append(ui.draggable);
+                }
+            });
+
+            $('#city').droppable({
+                accept: 'li[data-value="city"]',
+                activeClass:'hilight',
+                //activate: function (event, ui) {
+                //    $(this).addClass('hilight');
+                //},
+                //deactivate: function (event, ui) {
+                //    $(this).removeClass('hilight');
+                //},
+                //hoverClass: 'hilight',
+                //over: function (event, ui) {
+                //    $(this).addClass('hilight');
+                //},
+                //out: function (event, ui) {
+                //    $(this).removeClass('hilight');
+                //},
+                drop: function (event, ui) {
+                    $('#cities').append(ui.draggable);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

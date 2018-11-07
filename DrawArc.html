@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <!--<style>
+        #myCanvas{
+            border:2px solid red;
+        }
+    </style-->>
+</head>
+<body onload="drawArcTo()">
+    <canvas id="myCanvas" width="800" height="800"></canvas>
+    <script>
+        
+       
+        function drawArcTo() {
+            var canvas = document.getElementById('myCanvas');
+            ctx = canvas.getContext('2d');
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(300, 200);
+            ctx.lineTo(400, 500);
+            ctx.lineTo(600, 300);
+            ctx.stroke();
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(300, 200);
+            ctx.arcTo(400, 500, 600, 300, 180);
+            ctx.stroke();
+        }
+        //function drawArcTo() {
+        //    var canvas = document.getElementById('myCanvas');
+        //    ctx = canvas.getContext('2d');
+        //    ctx.strokeStyle = 'black';
+        //    ctx.lineWidth = 2;
+        //    ctx.beginPath();
+        //    ctx.moveTo(300, 200);
+        //    ctx.lineTo(400, 500);
+        //    ctx.lineTo(600, 300);
+        //    ctx.stroke();
+        //    ctx.strokeStyle = 'black';
+        //    ctx.lineWidth = 2;
+        //    ctx.beginPath();
+        //    ctx.moveTo(300, 200);
+        //    ctx.arcTo(400, 500, 595, 312, 200);
+        //    ctx.stroke();
+        //}
+    </script>
+</body>
+</html>
